@@ -1,6 +1,7 @@
 package com.lalithsoftware.web;
 
-public class HttpServletRequestCheckNonNullResult implements HttpServletRequestCheckResult  {
+public class HttpServletRequestCheckNonNullResult
+        implements HttpServletRequestCheckResult  {
 
     private HttpServletRequest httpServletRequest = null;
 
@@ -35,12 +36,16 @@ public class HttpServletRequestCheckNonNullResult implements HttpServletRequestC
     public void setServletContext(ServletContext newServletContext)    {
             servletContext = newServletContext;
     }
-    
+
+    /**
+     * Recursively call the checkPhoneNumber servlet.
+     */
     public void executeRequestResultCode()  {
         HttpServletRequest httpReqeust = getHttpServletRequest();
         HttpServletResponse httpResponse = getHttpServletResponse();
         ServletContext servletContext = getServletContext();
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/servlet/ShowSupplies");
+        RequestDispatcher dispatcher =
+            servletContext.getRequestDispatcher("/servlet/checkPhone");
         dispatcher.include(request, response);
     }
 }
